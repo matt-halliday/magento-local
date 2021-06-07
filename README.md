@@ -49,3 +49,8 @@ This instance is immutable and to throw it all away and start again, run:
 ```bash
 make rm
 ```
+
+## Credits
+
+Uses a great [container image](https://hub.docker.com/r/narayanvarma/magento2) 
+by [Narayan Varma](https://github.com/narayanvarma)

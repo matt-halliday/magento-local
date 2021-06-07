@@ -16,7 +16,7 @@ configure:
 	@./wait.sh
 	@${DCE} --user=www-data webserver bin/magento setup:install --base-url=http://magento2.local/ \
 	  --backend-frontname="admin_panel" \
-	  --db-host=database --db-name=magento2 --db-user=magento2 --db-password=magento2 \
+	  --db-host=db --db-name=magento2 --db-user=magento2 --db-password=magento2 \
 	  --admin-firstname=Admin --admin-lastname=User --admin-email=admin@example.com \
 	  --admin-user=admin@example.com --admin-password=magento2password! --language=en_GB \
 	  --currency=GBP --timezone=Europe/London --use-rewrites=1 \

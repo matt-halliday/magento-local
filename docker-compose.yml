@@ -1,28 +1,14 @@
 version: "3.8"
 services:
   webserver:
-    container_name: magento2_webserver
     image: narayanvarma/magento2:2.4.2
     ports:
       - "9000:9000"
       - "80:80"
-    networks:
-      local-network:
-        aliases:
-          - webserver
-    depends_on:
-      - db
-      - redis
-      - elasticsearch
   db:
-    container_name: magento2_mysql
     image: mysql:5.7.32
     ports:
       - "3306:3306"
-    networks:
-      local-network:
-        aliases:
-          - database
     volumes:
       - database:/var/lib/mysql
     environment:
@@ -31,23 +17,13 @@ services:
       - MYSQL_USER=magento2
       - MYSQL_PASSWORD=magento2
   redis:
-    container_name: magento2_redis
     image: redis:6.0.8
     ports:
       - "6379:6379"
-    networks:
-      local-network:
-        aliases:
-          - redis
   elasticsearch:
-    container_name: magento2_elasticsearch
     image: elasticsearch:6.7.2
     ports:
       - "9200:9200"
-    networks:
-      local-network:
-        aliases:
-          - elasticsearch
     environment:
       - cluster.name=magento2_justright
       - bootstrap.memory_lock=true
@@ -56,7 +32,5 @@ services:
       memlock:
         soft: -1
         hard: -1
-networks:
-  local-network:
 volumes:
   database:
