@@ -1,19 +1,19 @@
 #!/bin/sh
 
-
-CHECK_DB='mysql -h 127.0.0.1 -P 3306 -uroot -p"magento2" -e "SHOW DATABASES;"'
+CHECK_DB='nc -z db 3306'
 COUNTER=0
+
 echo "Waiting for MySQL"
-until eval $CHECK_DB &> /dev/null
+until eval $CHECK_DB
 do
   printf "."
   sleep 1
-  ((COUNTER++))
   if [[ $COUNTER -eq 30 ]]; then
-    echo "\nMySQL did not start:"
-    eval $CHECK_DB
+    echo -e "\nMySQL did not start:"
+    eval $CHECK_DB -v
     exit 1
   fi
+  ((COUNTER++))
 done
 
-echo "\nMySQL ready"
+echo -e "\nMySQL ready"

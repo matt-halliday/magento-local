@@ -13,7 +13,7 @@ start:
 
 configure:
 	@echo '${GREEN}Configuring Magento${NO_COLOR}'
-	@./wait.sh
+	@${DCE} --user=www-data webserver /bin/bash /scripts/wait.sh
 	@${DCE} --user=www-data webserver bin/magento setup:install --base-url=http://magento2.local/ \
 	  --backend-frontname="admin_panel" \
 	  --db-host=db --db-name=magento2 --db-user=magento2 --db-password=magento2 \
